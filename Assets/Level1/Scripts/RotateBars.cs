@@ -1,12 +1,14 @@
-using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RotateBars : MonoBehaviour
 {
-    [SerializeField] float fallDuration = 0.25f;
-    [SerializeField] float targetAngle = 0f;
-    [SerializeField] GameObject pivotPoint;
-    [SerializeField] Vector3 rotateAxis = Vector3.forward;
+    [SerializeField] private float fallDuration = 0.25f;
+    [SerializeField] private float targetAngle = 0f;
+    [SerializeField] private GameObject pivotPoint;
+    [SerializeField] private Vector3 rotateAxis = Vector3.forward;
+
+    [SerializeField] private UnityEvent onFinish = null;
 
     float startAngle;
     float timer;
@@ -32,6 +34,9 @@ public class RotateBars : MonoBehaviour
         transform.RotateAround(pivotPoint.transform.position, rotateAxis, delta);
 
         if (t >= 1f)
+        {   
             isFalling = false;
+            onFinish?.Invoke();
+        }
     }
 }
