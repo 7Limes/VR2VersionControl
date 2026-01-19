@@ -14,6 +14,7 @@ public class InteractBox : MonoBehaviour
     bool canInteract = false;
     bool activated = false;
 
+
     TextMeshProUGUI interactLabel;
 
     void Start()
@@ -22,14 +23,19 @@ public class InteractBox : MonoBehaviour
         interactLabel = interactLabelObject.GetComponent<TextMeshProUGUI>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        if (canInteract && Input.GetKey(KeyCode.E))
-        {   
-            if (!oneShot || (oneShot && !activated))
+        if (canInteract && Input.GetKeyDown(KeyCode.E))
+        {
+            bool activateOneshot = oneShot && !activated;
+            if (!oneShot || activateOneshot)
             {
                 interactEvent.Invoke();
                 activated = true;
+            }
+
+            if (activateOneshot)
+            {
                 interactPrompt = "";
                 interactLabel.text = "";
             }
@@ -44,7 +50,7 @@ public class InteractBox : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        canInteract = true;
+        canInteract = false;
         interactLabel.text = "";
     }
 }
