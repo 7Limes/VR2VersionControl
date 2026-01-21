@@ -7,8 +7,10 @@ public class TriggerMessage : MonoBehaviour
     public GameObject messagePanel;
     public TMP_Text countdownText;
 
+    public float freezeTime = 10f;
+
     private bool triggered = false;
-    private float countdownTime = 10f;
+    private Rigidbody playerRb;
 
     void OnTriggerEnter(Collider other)
     {
@@ -16,41 +18,47 @@ public class TriggerMessage : MonoBehaviour
         {
             triggered = true;
 
-            FreezePlayer(other.gameObject);
+            playerRb = other.GetComponent<Rigidbody>();
+            FreezePlayer();
+
             messagePanel.SetActive(true);
-
-            StartCoroutine(CountdownAndEnd());
+            StartCoroutine(CountdownAndUnfreeze());
         }
     }
 
-    void FreezePlayer(GameObject player)
+    void FreezePlayer()
     {
-        Rigidbody rb = player.GetComponent<Rigidbody>();
-        if (rb != null)
+        if (playerRb != null)
         {
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-            rb.constraints = RigidbodyConstraints.FreezeAll;
+            playerRb.linearVelocity = Vector3.zero;
+            playerRb.angularVelocity = Vector3.zero;
+            playerRb.constraints = RigidbodyConstraints.FreezeAll;
         }
-
-        
     }
 
-    IEnumerator CountdownAndEnd()
+    void UnfreezePlayer()
     {
-        float timeLeft = countdownTime;
+        if (playerRb != null)
+        {
+            playerRb.constraints = RigidbodyConstraints.None;
+            playerRb.constraints = RigidbodyConstraints.FreezeRotation; // optional
+        }
+    }
+
+    IEnumerator CountdownAndUnfreeze()
+    {
+        float timeLeft = freezeTime;
 
         while (timeLeft > 0)
         {
-            countdownText.text = "Game ends in " + Mathf.Ceil(timeLeft);
+            countdownText.text = "Try again in " + Mathf.Ceil(timeLeft);
             yield return new WaitForSeconds(1f);
             timeLeft--;
         }
 
-        Application.Quit();
+        messagePanel.SetActive(false);
+        UnfreezePlayer();
 
-        #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-        #endif
+        triggered = false; // allow retry
     }
 }
