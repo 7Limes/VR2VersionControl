@@ -9,6 +9,8 @@ public class TriggerMessage : MonoBehaviour
 
     public float freezeTime = 10f;
 
+    public MonoBehaviour playerInputScript;
+
     private bool triggered = false;
     private Rigidbody playerRb;
 
@@ -19,7 +21,9 @@ public class TriggerMessage : MonoBehaviour
             triggered = true;
 
             playerRb = other.GetComponent<Rigidbody>();
+
             FreezePlayer();
+            DisablePlayerInput();
 
             messagePanel.SetActive(true);
             StartCoroutine(CountdownAndUnfreeze());
@@ -41,7 +45,23 @@ public class TriggerMessage : MonoBehaviour
         if (playerRb != null)
         {
             playerRb.constraints = RigidbodyConstraints.None;
-            playerRb.constraints = RigidbodyConstraints.FreezeRotation; // optional
+            playerRb.constraints = RigidbodyConstraints.FreezeRotation;
+        }
+    }
+
+    void DisablePlayerInput()
+    {
+        if (playerInputScript != null)
+        {
+            playerInputScript.enabled = false;
+        }
+    }
+
+    void EnablePlayerInput()
+    {
+        if (playerInputScript != null)
+        {
+            playerInputScript.enabled = true;
         }
     }
 
@@ -57,8 +77,10 @@ public class TriggerMessage : MonoBehaviour
         }
 
         messagePanel.SetActive(false);
-        UnfreezePlayer();
 
-        triggered = false; // allow retry
+        UnfreezePlayer();
+        EnablePlayerInput();
+
+        triggered = false; 
     }
 }
