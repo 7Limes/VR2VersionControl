@@ -5411,8 +5411,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4285368711
+  m_fontColor: {r: 0.52811205, g: 0.5377358, b: 0.42866677, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5429,8 +5429,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10
-  m_fontSizeBase: 10
+  m_fontSize: 8
+  m_fontSizeBase: 8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5537,7 +5537,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 735.56, y: 3.29}
+  m_AnchoredPosition: {x: 735.56, y: 1.924}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &409639335
@@ -19088,6 +19088,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c6c1b5f087c247b9938903e056aebfa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1540441710}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c6c1b5f087c247b9938903e056aebfa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1540441715}
   m_SourcePrefab: {fileID: 100100000, guid: 2c6c1b5f087c247b9938903e056aebfa, type: 3}
 --- !u!1 &1540441709 stripped
 GameObject:
@@ -19176,8 +19179,29 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 46.142067, y: 40.534832, z: 0.79225147}
-  m_Center: {x: -22.571032, y: 5.9452243, z: 3.72189}
+  m_Size: {x: 41.863094, y: 40.534832, z: 0.79225147}
+  m_Center: {x: -20.247221, y: 5.9452243, z: 3.72189}
+--- !u!65 &1540441715
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540441709}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.9481902, y: 40.534832, z: 0.79225147}
+  m_Center: {x: -49.694523, y: 5.9452243, z: 3.72189}
 --- !u!1 &1557136403
 GameObject:
   m_ObjectHideFlags: 0
@@ -21140,7 +21164,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 01035b6bd0573b1c7a4d2707ba3d053b, type: 2}
+  - {fileID: 2100000, guid: d4d33c16ad968d844aa39e79badfafb1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25620,7 +25644,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 01035b6bd0573b1c7a4d2707ba3d053b, type: 2}
+  - {fileID: 2100000, guid: 5d009f9b5ed313f418277860b4e1b7cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
